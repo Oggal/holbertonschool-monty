@@ -35,5 +35,9 @@ int main(int argC, char **argV)
 
 		do_op(&MontyStack, myOp);
 	}
+	fclose(target);
+	freeStack( MontyStack);
+	free(CURRENT_COMMAND->opcode);
+	free(CURRENT_COMMAND);
 	return (EXIT_SUCCESS);
 }

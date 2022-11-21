@@ -63,13 +63,11 @@ void freeStack(stack_t *stack)
 		return;
 	while (cur->prev)
 		cur = cur->prev;
-	while (cur)
+	while (cur->next)
 	{
 		free(cur->prev);
-
-		if (!(cur->next))
-			free(cur);
-		else
-			cur = cur->next;
+		cur = cur->next;
 	}
+	free(cur->prev);
+	free(cur);
 }
