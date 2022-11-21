@@ -77,7 +77,7 @@ void do_op(stack_t **stack, command_t *command)
 		free(CURRENT_COMMAND);
 	}
 	CURRENT_COMMAND = command;
-	for( i = 0; strcmp(ops[i].opcode,command->opcode);i++)
+	for( i = 0; ops[i].opcode && strcmp(ops[i].opcode,command->opcode);i++)
 		;
 	if (ops[i].opcode == NULL)
 	{
