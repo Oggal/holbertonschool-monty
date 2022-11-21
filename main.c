@@ -19,7 +19,7 @@ int main(int argC, char **argV)
 
 	if (argC != 2)
 	{
-		dprintf(STDERR_FILENO, "USAGE: %s file\n",argV[0]);
+		dprintf(STDERR_FILENO, "USAGE: %s file\n", argV[0]);
 		return (EXIT_FAILURE);
 	}
 	target = fopen(argV[1], "r");
@@ -36,7 +36,7 @@ int main(int argC, char **argV)
 		do_op(&MontyStack, myOp);
 	}
 	fclose(target);
-	freeStack( MontyStack);
+	freeStack(MontyStack);
 	free(CURRENT_COMMAND->opcode);
 	free(CURRENT_COMMAND);
 	return (EXIT_SUCCESS);

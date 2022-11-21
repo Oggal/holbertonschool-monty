@@ -1,9 +1,9 @@
 #include "monty.h"
 
 /**
- * push -
- *@stack
- *@line_num
+ * push - Push Item to head
+ *@stack: Current Stack
+ *@line_num: Current Line
  */
 void push(stack_t **stack, __attribute__ ((unused)) unsigned int line_num)
 {
@@ -11,7 +11,7 @@ void push(stack_t **stack, __attribute__ ((unused)) unsigned int line_num)
 		return; /* FAIL */
 	if (CURRENT_COMMAND == NULL)
 		return; /* FAIL */
-        addNodeToStack(stack, CURRENT_COMMAND->parm_num);
+	addNodeToStack(stack, CURRENT_COMMAND->parm_num);
 }
 
 /**
@@ -19,7 +19,7 @@ void push(stack_t **stack, __attribute__ ((unused)) unsigned int line_num)
  * @stack: Current Stack
  * @line_num: Current Line
  */
-void pall( stack_t **stack,__attribute__ ((unused)) unsigned int line_num)
+void pall(stack_t **stack, __attribute__ ((unused)) unsigned int line_num)
 {
 	if (stack == NULL)
 		return; /* FAIL */
@@ -64,4 +64,23 @@ void pop(stack_t **stack, unsigned int line_num)
 		exit(EXIT_FAILURE);
 	}
 	popHead(stack);
+}
+
+void swap(stack_t **stack, unsigned int line_num)
+{
+	int temp;
+	if (stack == NULL)
+		return;
+	if(!*stack || !(*stack)->next)
+	{
+		dprintf(STDERR_FILENO, "L%i: can't swap, stack too short\n",
+			line_num);
+		freeStack(*stack);
+		free(CURRENT_COMMAND->opcode);
+		free(CURRENT_COMMAND);
+		exit(EXIT_FAILURE);
+	}
+        temp = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = temp;
 }

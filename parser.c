@@ -21,11 +21,11 @@ int isDelim(char c)
 }
 
 /**
- * parse_line -
- * @line_txt:
- * @line_num:
+ * parse_line - Get Command from line
+ * @line_txt:String of line
+ * @line_num:Current Line Number
  *
- * Return:
+ * Return: Command Structure
  */
 command_t *parse_line(char *line_txt, int line_num)
 {
@@ -33,7 +33,7 @@ command_t *parse_line(char *line_txt, int line_num)
 	int i = 0;
 	command_t *outOp;
 
-	if(!line_txt)
+	if (!line_txt)
 		return (NULL);
 
 	while (isDelim(line_txt[i]))
@@ -46,9 +46,9 @@ command_t *parse_line(char *line_txt, int line_num)
 		return (NULL);
 	outOp->line_num = line_num;
 	for (i = 0; !(isDelim(opcode[i]) || opcode[i] == '\n'); i++)
-	        ;
+		;
 	outOp->opcode = strndup(opcode, i);
-	outOp->parm_num = atoi(opcode+i);
+	outOp->parm_num = atoi(opcode + i);
 	return (outOp);
 }
 
@@ -65,6 +65,7 @@ void do_op(stack_t **stack, command_t *command)
 	{"pall", pall},
 	{"pint", pint},
 	{"pop", pop},
+	{"swap", swap},
 	{NULL, NULL}
 	};
 	int i;
@@ -79,7 +80,7 @@ void do_op(stack_t **stack, command_t *command)
 		free(CURRENT_COMMAND);
 	}
 	CURRENT_COMMAND = command;
-	for( i = 0; ops[i].opcode && strcmp(ops[i].opcode,command->opcode);i++)
+	for (i = 0; ops[i].opcode && strcmp(ops[i].opcode, command->opcode); i++)
 		;
 	if (ops[i].opcode == NULL)
 	{
