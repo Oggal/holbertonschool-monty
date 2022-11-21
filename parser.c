@@ -64,6 +64,7 @@ void do_op(stack_t **stack, command_t *command)
 	{"push", push},
 	{"pall", pall},
 	{"pint", pint},
+	{"pop", pop},
 	{NULL, NULL}
 	};
 	int i;

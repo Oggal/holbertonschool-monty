@@ -71,3 +71,30 @@ void freeStack(stack_t *stack)
 	free(cur->prev);
 	free(cur);
 }
+
+/**
+ *popHead - Pop From Head of Stack
+ *@stack: Stack to pop head from
+ *
+ *Return: int value at head
+ */
+int popHead(stack_t **stack)
+{
+	int o = 0;
+	stack_t *old;
+
+	if (stack == NULL)
+		return (0);
+	if ((*stack)->next)
+	{
+		old = *stack;
+		o = old->n;
+		*stack = old->next;
+		free(old);
+		(*stack)->prev = NULL;
+		return (o);
+	}
+	o = (*stack)->n;
+	free(*stack);
+	return (o);
+}

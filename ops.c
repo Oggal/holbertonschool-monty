@@ -47,3 +47,21 @@ void pint(stack_t **stack, unsigned int line_num)
 	}
 	dprintf(STDOUT_FILENO, "%i\n", (*stack)->n);
 }
+
+/**
+ *pop - pop top of the stack
+ * @stack: Current Stack
+ * @line_num: Current Line
+ */
+void pop(stack_t **stack, unsigned int line_num)
+{
+	if (stack == NULL)
+		return;
+	if (!*stack)
+	{
+		dprintf(STDERR_FILENO, "L%i: can't pop an empty stack\n",
+			line_num);
+		exit(EXIT_FAILURE);
+	}
+	popHead(stack);
+}
