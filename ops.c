@@ -5,7 +5,7 @@
  *@stack
  *@line_num
  */
-void push(stack_t **stack, unsigned int line_num)
+void push(stack_t **stack, __attribute__ ((unused)) unsigned int line_num)
 {
 	if (stack == NULL)
 		return; /* FAIL */
@@ -19,7 +19,7 @@ void push(stack_t **stack, unsigned int line_num)
  * @stack: Current Stack
  * @line_num: Current Line
  */
-void pall( stack_t **stack, unsigned int line_num)
+void pall( stack_t **stack,__attribute__ ((unused)) unsigned int line_num)
 {
 	if (stack == NULL)
 		return; /* FAIL */

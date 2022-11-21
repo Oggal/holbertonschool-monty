@@ -33,7 +33,7 @@ int main(int argC, char **argV)
 	{
 		myOp = parse_line(line, lineNum);
 
-		
 		do_op(&MontyStack, myOp);
 	}
+	return (EXIT_SUCCESS);
 }
