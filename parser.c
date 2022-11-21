@@ -1,6 +1,26 @@
 #include "monty.h"
 
 /**
+ *isDelim - Return 1 if char is delim
+ *@c: char to test
+ * Return: c is a delim
+ */
+int isDelim(char c)
+{
+	char *delims = " \t";
+	int i = 0;
+
+	while (delims[i])
+	{
+		if (c == delims[i])
+			return (1);
+		i++;
+	}
+	return (0);
+
+}
+
+/**
  * parse_line -
  * @line_txt:
  * @line_num:
@@ -16,7 +36,7 @@ command_t *parse_line(char *line_txt, int line_num)
 	if(!line_txt)
 		return (NULL);
 
-	while (line_txt[i] == ' ')
+	while (isDelim(line_txt[i]))
 		i++;
 	if (line_txt[i] == '\n')
 		return (NULL);
@@ -25,7 +45,7 @@ command_t *parse_line(char *line_txt, int line_num)
 	if (!outOp)
 		return (NULL);
 	outOp->line_num = line_num;
-	for (i = 0; !(opcode[i] == ' ' || opcode[i] == '\n'); i++)
+	for (i = 0; !(isDelim(opcode[i]) || opcode[i] == '\n'); i++)
 	        ;
 	outOp->opcode = strndup(opcode, i);
 	outOp->parm_num = atoi(opcode+i);
