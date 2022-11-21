@@ -65,13 +65,18 @@ void pop(stack_t **stack, unsigned int line_num)
 	}
 	popHead(stack);
 }
-
+/**
+ *swap - swap top 2 stack values
+ *@stack: Current Stack
+ *@line_num: Line Number
+ */
 void swap(stack_t **stack, unsigned int line_num)
 {
 	int temp;
+
 	if (stack == NULL)
 		return;
-	if(!*stack || !(*stack)->next)
+	if (!*stack || !(*stack)->next)
 	{
 		dprintf(STDERR_FILENO, "L%i: can't swap, stack too short\n",
 			line_num);
@@ -80,7 +85,7 @@ void swap(stack_t **stack, unsigned int line_num)
 		free(CURRENT_COMMAND);
 		exit(EXIT_FAILURE);
 	}
-        temp = (*stack)->n;
+	temp = (*stack)->n;
 	(*stack)->n = (*stack)->next->n;
 	(*stack)->next->n = temp;
 }
