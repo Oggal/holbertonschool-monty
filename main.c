@@ -33,7 +33,7 @@ int main(int argC, char **argV)
 	{
 		myOp = parse_line(line, lineNum);
 
-		//printf("%s :: %i At line : %i\n", myOp->opcode, myOp->parm_num, myOp->line_num);
+		
 		do_op(&MontyStack, myOp);
 	}
 }
