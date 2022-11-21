@@ -85,6 +85,8 @@ int popHead(stack_t **stack)
 
 	if (stack == NULL)
 		return (0);
+	while ((*stack)->prev)
+		*stack = (*stack)->prev;
 	if ((*stack)->next)
 	{
 		old = *stack;
