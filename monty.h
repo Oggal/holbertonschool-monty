@@ -60,7 +60,7 @@ void do_op(stack_t **stack, command_t *command);
 extern command_t *CURRENT_COMMAND;
 void push(stack_t **stack, unsigned int line_num);
 void pall(stack_t **stack, unsigned int line_num);
-
+void pint(stack_t **stack, unsigned int line_num);
 /* Stack Functions */
 stack_t *addNodeToStack(stack_t **stack, const int value);
 int popHead(stack_t *stack);

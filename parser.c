@@ -61,8 +61,9 @@ void do_op(stack_t **stack, command_t *command)
 {
 	/* Meaning of Life */
 	instruction_t ops[] = {
-	{"push",push},
-	{"pall",pall},
+	{"push", push},
+	{"pall", pall},
+	{"pint", pint},
 	{NULL, NULL}
 	};
 	int i;
