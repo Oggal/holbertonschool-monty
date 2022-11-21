@@ -50,11 +50,15 @@ void do_op(stack_t **stack, command_t *command)
 	if (stack == NULL)
 		return;
 	if (command == NULL)
-		return; /* Should we panic here?*/
+		return;
 	CURRENT_COMMAND = command;
 	for( i = 0; strcmp(ops[i].opcode,command->opcode);i++)
 		;
 	if (ops[i].opcode == NULL)
-		return; /* DO PANIC HERE, UNKNOWN OPERATION */
+	{
+		dprintf(STDERR_FILENO, "L%i: unknown instructtion %s",
+			command->line_num, command->opcode);
+		exit(EXIT_FAILURE);
+	}
 	(ops[i].f)(stack, command->line_num);
 }
