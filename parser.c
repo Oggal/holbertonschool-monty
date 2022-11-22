@@ -66,6 +66,8 @@ void do_op(stack_t **stack, command_t *command)
 	{"pint", pint},
 	{"pop", pop},
 	{"swap", swap},
+	{"add", add},
+	{"nop", NULL},
 	{NULL, NULL}
 	};
 	int i;
@@ -88,5 +90,6 @@ void do_op(stack_t **stack, command_t *command)
 			command->line_num, command->opcode);
 		exit(EXIT_FAILURE);
 	}
+	if (ops[i].f)
 	(ops[i].f)(stack, command->line_num);
 }

@@ -65,6 +65,7 @@ void pop(stack_t **stack, unsigned int line_num)
 	}
 	popHead(stack);
 }
+
 /**
  *swap - swap top 2 stack values
  *@stack: Current Stack
