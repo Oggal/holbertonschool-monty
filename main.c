@@ -25,7 +25,7 @@ int main(int argC, char **argV)
 	target = fopen(argV[1], "r");
 	if (!target)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argV[1]);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argV[1]);
 		return (EXIT_FAILURE);
 	}
 
