@@ -19,7 +19,7 @@ int main(int argC, char **argV)
 
 	if (argC != 2)
 	{
-		dprintf(STDERR_FILENO, "USAGE: %s file\n", argV[0]);
+		dprintf(STDERR_FILENO, "USAGE: %s file\n", "monty");
 		return (EXIT_FAILURE);
 	}
 	target = fopen(argV[1], "r");
