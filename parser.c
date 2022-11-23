@@ -86,7 +86,7 @@ void do_op(stack_t **stack, command_t *command)
 		;
 	if (ops[i].opcode == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%i: unknown instructtion %s\n",
+		dprintf(STDERR_FILENO, "L%i: unknown instruction %s\n",
 			command->line_num, command->opcode);
 		exit(EXIT_FAILURE);
 	}
